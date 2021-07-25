@@ -40,7 +40,7 @@ const PostList = () => {
   }
 
 
-  // nhs final begins here...
+
   return (
     <Box>
       <HStack spacing="14px">
@@ -77,7 +77,7 @@ const PostList = () => {
     </Box>
   );
 
-  // nhs final ends here...
+
 }
 
 export const PostsCountStat = () => {
@@ -92,9 +92,14 @@ export const PostsCountStat = () => {
 }
 
 export const PostsManager = () => {
+
+  // nhs final begins here...
   return (
     <Box>
-      <Flex wrap="wrap" bg="#011627" p={4} color="white">
+
+        {/*crimson (`#dc143c`)*/}
+      {/*<Flex wrap="wrap" bg="#011627" p={4} color="white">*/}
+        <Flex wrap="wrap" bg="#dc143c" p={8} color="white">
         <Box>
           <Heading size="xl">Manage Posts</Heading>
         </Box>
@@ -104,11 +109,15 @@ export const PostsManager = () => {
         </Box>
       </Flex>
       <Divider />
-      <Box p={4}>
+      <Box p={4} bg='#6495ed'>
+
+          {/*Box inherited from div*/}
         <PostList />
       </Box>
     </Box>
-  )
+  );
+
+  // nhs final ends here...
 }
 
 export default PostsManager

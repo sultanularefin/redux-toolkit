@@ -19,11 +19,19 @@ interface ListResponse<T> {
   total_pages: number
   data: T[]
 }
+
+//import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+// only these 2 are imported.
+
+// https://jsonplaceholder.typicode.com/posts
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (build) => ({
     listPosts: build.query<ListResponse<Post>, number | void>({
       query: (page = 1) => `posts?page=${page}`,
+
+      // query: (page = 1) => `posts`,
     }),
   }),
 })

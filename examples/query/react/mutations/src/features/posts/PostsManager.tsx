@@ -120,6 +120,8 @@ export const PostsCountStat = () => {
   )
 }
 
+
+// NHS begins here...
 export const PostsManager = () => {
   return (
     <Box>
@@ -158,5 +160,7 @@ export const PostsManager = () => {
     </Box>
   )
 }
+
+// NHS ends here....
 
 export default PostsManager

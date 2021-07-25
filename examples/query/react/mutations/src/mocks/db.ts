@@ -1,7 +1,23 @@
 import { factory, primaryKey } from '@mswjs/data'
+// https://github.com/mswjs/data
+
 import { nanoid } from '@reduxjs/toolkit'
-import { rest } from 'msw'
+
+import { rest } from 'msw';
+
+// https://github.com/mswjs/msw
+
 import { Post } from '../app/services/posts'
+
+/*
+
+tsx extension is used when we want to embed JSX elements inside the files while .
+
+ ts is used for plain Typescript files and do not support adding JSX Elements.
+
+
+ when you use .tsx you can use JSX in that particular file while
+ */
 
 const db = factory({
   post: {
