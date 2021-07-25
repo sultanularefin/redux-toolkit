@@ -39,6 +39,8 @@ const PostList = () => {
     return <div>No posts :(</div>
   }
 
+
+  // nhs final begins here...
   return (
     <Box>
       <HStack spacing="14px">
@@ -73,7 +75,9 @@ const PostList = () => {
         ))}
       </List>
     </Box>
-  )
+  );
+
+  // nhs final ends here...
 }
 
 export const PostsCountStat = () => {

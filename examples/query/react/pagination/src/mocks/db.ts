@@ -1,4 +1,17 @@
-import { nanoid } from '@reduxjs/toolkit'
+// import { nanoid } from '@reduxjs/toolkit'
+
+
+import {createAsyncThunk,
+  createSlice,
+  PayloadAction,
+  current,
+  createNextState,
+  original,
+  isDraft,
+  nanoid
+} from '@reduxjs/toolkit';
+
+
 import { factory, primaryKey } from '@mswjs/data'
 import faker from 'faker'
 import { Post, postStatuses } from '../app/services/posts'
