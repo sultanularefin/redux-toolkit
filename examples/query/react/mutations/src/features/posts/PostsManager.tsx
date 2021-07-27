@@ -29,21 +29,45 @@ import { PostDetail } from './PostDetail'
 
 const AddPost = () => {
   const initialValue = { name: '' }
-  const [post, setPost] = useState<Pick<Post, 'name'>>(initialValue)
-  const [addPost, { isLoading }] = useAddPostMutation()
-  const toast = useToast()
+
+  // From T pick a set of properties K
+
+  // declare function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K>;
+  // const nameAndAgeOnly = pick(person, "name", "age"); // { name: string, age: number }
+
+
+      /*
+
+      export interface Post {
+  id: string
+  name: string
+}
+  */
+  const [post, setPost] = useState<Pick<Post, 'name'>>(initialValue);
+  const [addPost, { isLoading }] = useAddPostMutation();
+  const toast = useToast();
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setPost((prev) => ({
+
+    console.log("target.value: ", target.value);
+    console.log("target.name: ", target.name);
+    setPost((prev) => //{
+      ({
       ...prev,
       [target.name]: target.value,
-    }))
+    })
+
+  // }
+
+    )
+
   }
 
   const handleAddPost = async () => {
     try {
-      await addPost(post).unwrap()
-      setPost(initialValue)
+      // const [post, setPost] = useState<Pick<Post, 'name'>>(initialValue);
+      await addPost(post).unwrap();
+      setPost(initialValue);
     } catch {
       toast({
         title: 'An error occurred',
@@ -108,7 +132,15 @@ const PostList = () => {
 }
 
 export const PostsCountStat = () => {
-  const { data: posts } = useGetPostsQuery()
+  const {data: posts, status, error} = useGetPostsQuery();
+
+  // const { data, status, error } = result
+
+  console.log("data: ", posts);
+  console.log("status: ", status);
+  console.log("error: ", error);
+
+
 
   if (!posts) return null
 
