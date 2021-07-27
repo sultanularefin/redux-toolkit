@@ -66,7 +66,55 @@ const AddPost = () => {
   const handleAddPost = async () => {
     try {
       // const [post, setPost] = useState<Pick<Post, 'name'>>(initialValue);
+      // /home/taxi/Programs/byvl/RTkForkedJuly252021/examples/query/react/mutations/node_modules/@reduxjs/toolkit/dist/query/core/buildInitiate.d.ts
+
+      /*
+
+       /**
+     * Unwraps a mutation call to provide the raw response/error.
+     *
+     * @remarks
+     * If you need to access the error or success payload immediately after a mutation, you can chain .unwrap().
+     *
+     * @example
+     * ```ts
+     * // codeblock-meta title="Using .unwrap"
+     * addPost({ id: 1, name: 'Example' })
+     *   .unwrap()
+     *   .then((payload) => console.log('fulfilled', payload))
+     *   .catch((error) => console.error('rejected', error));
+     * ```
+     *
+     * @example
+     * ```ts
+     * // codeblock-meta title="Using .unwrap with async await"
+     * try {
+     *   const payload = await addPost({ id: 1, name: 'Example' }).unwrap();
+     *   console.log('fulfilled', payload)
+     * } catch (error) {
+     *   console.error('rejected', error);
+     * }
+     * ```
+     */
+
+
+      console.log("post: (does it have an id :", post);
+
       await addPost(post).unwrap();
+      //
+
+      // post --is - body
+      /**
+       addPost: build.mutation<Post, Partial<Post>>({
+      query: (body) => ({
+        url: `posts`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Post', id: 'LIST' }],
+    }),
+       */
+
       setPost(initialValue);
     } catch {
       toast({

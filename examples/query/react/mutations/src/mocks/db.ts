@@ -36,9 +36,15 @@ const db = factory({
 
 export const handlers = [
   rest.post('/posts', async (req, res, ctx) => {
+
+    console.log("req: (/posts) ---------------------------------- ", req);
+
+
+
     const { name } = req.body as Partial<Post>
 
     if (Math.random() < 0.3) {
+      console.log("user generated 500 error");
       return res(
         ctx.json({ error: 'Oh no, there was an error, try again.' }),
         ctx.status(500),
@@ -54,6 +60,8 @@ export const handlers = [
     return res(ctx.json(post), ctx.delay(300))
   }),
   rest.put('/posts/:id', (req, res, ctx) => {
+
+    console.log("req: (/posts/:id) ---------------------------------- ", req);
     const { name } = req.body as Partial<Post>
 
     if (Math.random() < 0.3) {
@@ -71,5 +79,45 @@ export const handlers = [
 
     return res(ctx.json(post), ctx.delay(300))
   }),
+
+    /*
+  rest.delete('/posts/:id', (req, res, ctx) => {
+    console.log("xyz");
+
+    console.log("req: (/posts/:id) ---------------------------------- ", req);
+    const { name } = req.body as Partial<Post>
+
+    if (Math.random() < 0.3) {
+      return res(
+          ctx.json({ error: 'Oh no, there was an error, try again.' }),
+          ctx.status(500),
+          ctx.delay(300)
+      )
+    }
+
+    const post = db.post.update({
+      where: { id: { equals: req.params.id } },
+      data: { name },
+    })
+
+    return res(ctx.json(post), ctx.delay(300))
+  }),
+    */
+
+    //
+
+    /*
+
+    /**
+     Generate request handlers of the given type based on the model.
+
+     toHandlers<HandlerType extends 'rest' | 'graphql'>(type: HandlerType, baseUrl?: string):
+     HandlerType extends 'rest' ? RestHandler[] : GraphQLHandler[];
+
+     // /home/taxi/Programs/byvl/RTkForkedJuly252021/node_modules/@mswjs/data/lib/glossary.d.ts
+     */
+
+
+
   ...db.post.toHandlers('rest'),
 ] as const
